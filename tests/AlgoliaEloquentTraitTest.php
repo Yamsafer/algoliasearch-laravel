@@ -88,7 +88,7 @@ class AlgoliaEloquentTraitTest extends TestCase
 
         $this->assertEquals($modelHelper->getFinalIndexName($model6, $realModelHelper->getSettings($model6)['replicas'][0]), 'model_6_desc_testing');
 
-        $model6->setSettings();
+        $model6->_setSettings();
 
         $model12 = new Model12();
         $modelHelper->shouldReceive('getSettings')->andReturn($realModelHelper->getSettings($model12));
@@ -98,7 +98,7 @@ class AlgoliaEloquentTraitTest extends TestCase
 
         $this->assertEquals($modelHelper->getFinalIndexName($model12, $realModelHelper->getSettings($model12)['slaves'][0]), 'model_6_desc_testing');
 
-        $model12->setSettings();
+        $model12->_setSettings();
     }
 
     public function testSetSettingsMerge()
@@ -138,7 +138,7 @@ class AlgoliaEloquentTraitTest extends TestCase
         // remove warning test is done with to should receive with
         $this->assertEquals(1, 1);
 
-        $model13->setSettings(false, true);
+        $model13->_setSettings(false, true);
     }
 
     public function testSetSynonyms()
@@ -170,7 +170,7 @@ class AlgoliaEloquentTraitTest extends TestCase
         $modelHelper->shouldReceive('getIndices')->andReturn([$index]);
         $modelHelper->shouldReceive('getReplicasSettings')->andReturn($realModelHelper->getReplicasSettings($model10));
 
-        $this->assertEquals(null, $model10->setSettings());
+        $this->assertEquals(null, $model10->_setSettings());
     }
 
     public function testPushToIndexWithGetAlgoliaRecordAndIndexName()
